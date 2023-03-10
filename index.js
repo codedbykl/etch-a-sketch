@@ -1,5 +1,6 @@
 const sketchPad = document.querySelector('.sketch-pad');
 const buttons = document.querySelectorAll('[data-action]');
+const formSize = document.querySelector('.form-size');
 
 function createGrid(sideSquares) {
   const allSquares = sideSquares ** 2;
@@ -20,6 +21,17 @@ function handleClosePopup(event) {
   popup.classList.add('hide');
 }
 
+function handleGridSize(event) {
+  event.preventDefault();
+  const input = event.target.children[0];
+  const popup = document.querySelector('.popup');
+
+  createGrid(input.value);
+  input.value = '';
+
+  popup.classList.add('hide');
+}
+
 function checkButtonAction(button) {
   const buttonAction = button.dataset.action;
 
@@ -36,3 +48,5 @@ buttons.forEach(button => {
 });
 
 createGrid(16);
+
+formSize.addEventListener('submit', handleGridSize);
