@@ -15,11 +15,18 @@ function handleOpenPopup(event) {
   popup.classList.remove('hide');
 }
 
+function handleClosePopup(event) {
+  const popup = event.currentTarget.parentNode;
+  popup.classList.add('hide');
+}
+
 function checkButtonAction(button) {
   const buttonAction = button.dataset.action;
 
   if (buttonAction === 'open') {
     return handleOpenPopup;
+  } else if (buttonAction === 'close') {
+    return handleClosePopup;
   }
 }
 
