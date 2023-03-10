@@ -1,6 +1,9 @@
 const sketchPad = document.querySelector('.sketch-pad');
 const buttons = document.querySelectorAll('[data-action]');
 const formSize = document.querySelector('.form-size');
+const colorPicker = document.querySelector('.input-color');
+
+let selectedColor = colorPicker.value;
 
 function createGrid(sideSquares) {
   const allSquares = sideSquares ** 2;
@@ -33,6 +36,12 @@ function handleGridSize(event) {
   popup.classList.add('hide');
 }
 
+function handleColorSelection(event) {
+  const pickedColor = event.target.value;
+
+  selectedColor = pickedColor;
+}
+
 function checkButtonAction(button) {
   const buttonAction = button.dataset.action;
 
@@ -51,3 +60,4 @@ buttons.forEach(button => {
 createGrid(16);
 
 formSize.addEventListener('submit', handleGridSize);
+colorPicker.addEventListener('input', handleColorSelection);
