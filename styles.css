@@ -104,3 +104,20 @@ input {
 
   justify-self: stretch;
 }
+
+.input-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 4.8rem;
+  height: 3.8rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.input-color::-webkit-color-swatch,
+.input-color::-moz-color-swatch {
+  border-radius: 0.4rem;
+  border: none;
+}
