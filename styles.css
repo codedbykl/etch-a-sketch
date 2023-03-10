@@ -57,6 +57,26 @@ input {
 }
 
 /* general styles */
+.button {
+  background-color: #2b2a33;
+  color: #f2f1f5;
+
+  cursor: pointer;
+}
+
+.button[data-action='close'] {
+  display: grid;
+  place-items: center;
+
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+
+  font-size: 2rem;
+
+  padding: 0.4rem;
+}
+
 .sketch-pad {
   display: grid;
 
