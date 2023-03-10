@@ -121,3 +121,22 @@ input {
   border-radius: 0.4rem;
   border: none;
 }
+
+.popup {
+  display: grid;
+  place-items: center;
+
+  position: absolute;
+  inset: 0;
+
+  background-color: #fff;
+}
+
+.popup.hide {
+  display: none;
+}
+
+.form-size {
+  display: grid;
+  gap: 1.4rem;
+}
