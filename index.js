@@ -5,6 +5,7 @@ const colorPicker = document.querySelector('.input-color');
 
 const squares = sketchPad.childNodes;
 let selectedColor = colorPicker.value;
+let rgbModeActived = false;
 
 function createGrid(sideSquares) {
   const allSquares = sideSquares ** 2;
@@ -40,18 +41,40 @@ function handleGridSize(event) {
 function handleColorSelection(event) {
   const pickedColor = event.target.value;
 
-  selectedColor = pickedColor;
+  if (rgbModeActived) {
+    selectedColor = pickedColor;
+    rgbModeActived = false;
+  }
 }
 
 function handlePaint(event) {
   const square = event.target;
   const rightMouseButtonPressed = event.buttons === 2;
+  const leftMouseButtonPressed = event.buttons === 1;
+
+  if (leftMouseButtonPressed && rgbModeActived) {
+    selectedColor = generateRgbColor();
+  } else {
+    selectedColor = colorPicker.value;
+  }
 
   if (rightMouseButtonPressed) {
     selectedColor = '#fff';
   }
 
   square.style.backgroundColor = selectedColor;
+}
+
+function generateRgbColor() {
+  const red = Math.floor(Math.random() * 255);
+  const green = Math.floor(Math.random() * 255);
+  const blue = Math.floor(Math.random() * 255);
+
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function handleRgbMode() {
+  rgbModeActived = true;
 }
 
 function checkButtonAction(button) {
@@ -61,6 +84,8 @@ function checkButtonAction(button) {
     return handleOpenPopup;
   } else if (buttonAction === 'close') {
     return handleClosePopup;
+  } else {
+    return handleRgbMode;
   }
 }
 
