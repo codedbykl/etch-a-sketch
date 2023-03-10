@@ -55,3 +55,24 @@ input {
   place-items: center;
   gap: 2rem;
 }
+
+/* general styles */
+.sketch-pad {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+  width: 50rem;
+  height: 50rem;
+
+  box-shadow: inset 0 0 0 0.1rem #eee;
+
+  user-select: none;
+
+  cursor: crosshair;
+}
+
+.square {
+  box-shadow: inset 0 0 0 0.05rem #eee;
+}
