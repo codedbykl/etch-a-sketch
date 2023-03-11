@@ -14,6 +14,7 @@ function createGrid(sideSquares) {
   sketchPad.style.gridTemplateColumns = `repeat(${sideSquares}, 1fr)`;
   sketchPad.style.gridTemplateRows = `repeat(${sideSquares}, 1fr)`;
 
+  sketchPad.textContent = '';
   sketchPad.insertAdjacentHTML('afterbegin', square.repeat(allSquares));
 }
 
