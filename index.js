@@ -3,7 +3,6 @@ const buttons = document.querySelectorAll('[data-action]');
 const formSize = document.querySelector('.form-size');
 const colorPicker = document.querySelector('.input-color');
 
-const squares = sketchPad.childNodes;
 let selectedColor = colorPicker.value;
 let rgbModeActived = false;
 
@@ -34,6 +33,9 @@ function handleGridSize(event) {
   const popup = document.querySelector('.popup');
 
   createGrid(input.value);
+
+  makeSquaresHearPaintEvents();
+
   input.value = '';
 
   popup.classList.add('hide');
@@ -100,6 +102,11 @@ function paint(square) {
   });
 }
 
+function makeSquaresHearPaintEvents() {
+  const squares = sketchPad.childNodes;
+  squares.forEach(square => paint(square));
+}
+
 buttons.forEach(button => {
   const listener = checkButtonAction(button);
   button.addEventListener('click', event => listener(event));
@@ -107,7 +114,7 @@ buttons.forEach(button => {
 
 createGrid(16);
 
-squares.forEach(square => paint(square));
+makeSquaresHearPaintEvents();
 
 formSize.addEventListener('submit', handleGridSize);
 colorPicker.addEventListener('input', handleColorSelection);
