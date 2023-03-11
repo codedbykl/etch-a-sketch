@@ -116,5 +116,7 @@ createGrid(16);
 
 makeSquaresHearPaintEvents();
 
+sketchPad.addEventListener('contextmenu', event => event.preventDefault());
+
 formSize.addEventListener('submit', handleGridSize);
 colorPicker.addEventListener('input', handleColorSelection);
